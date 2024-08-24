@@ -7,7 +7,6 @@
 const url = "wss://as.binomo.com/";
 
 const ws = new WebSocket(url);
-
 //create date constructor
 
 const data_ = Array(1);
