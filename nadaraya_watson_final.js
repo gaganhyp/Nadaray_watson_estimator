@@ -1,7 +1,5 @@
 //fully implementation of adding data conconrently to the graph  and calcutaing 
-
 //nadaray watson estimator
-
 // -both price and nadaray envolpe array 
 
 const url = "wss://as.binomo.com/";
