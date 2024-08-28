@@ -242,3 +242,5 @@ function calc_nadaray(src){
 }
 
 getData();
+
+//finally
