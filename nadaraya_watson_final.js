@@ -3,136 +3,78 @@
 // -both price and nadaray envolpe array 
 
 const url = "wss://as.binomo.com/";
-
 const ws = new WebSocket(url);
 //create date constructor
-
 const data_ = Array(1);
-
 const ctx = document.getElementById('chart').getContext('2d');
-
 var dataFirst = {
-
     label: "#1",
-
     data: [],
-
     lineTension: 0,
-
     fill: false,
-
     borderColor: 'rgba(255, 26, 104, 6)'
-
   };
 
 var dataSecond = {
-
     label: "#2",
-
     data: [],
-
     lineTension: 0,
-
     fill: false,
-
   borderColor: 'green'
-
   };
 
 var speedData = {
-
   labels: [],
-
   datasets: [dataFirst, dataSecond]
-
 };
 
 var chartOptions = {
-
   animation : false,
-
   scales: {
-
           x:{
-
             min:0, 
-
             max: 1000
-
              },
-
           y: {
-
             beginAtZero: false,
-
-            
-
+         
           }
-
         },
-
   legend: {
-
     display: true,
-
     position: 'top',
-
     labels: {
-
       boxWidth: 80,
-
       fontColor: 'black'
-
     }
-
   }
-
 };
 
 var chart = new Chart(ctx, {
-
   type: 'line',
-
   data: speedData,
-
   options: chartOptions
-
 });
 
 function pop_second_arr(){
-
 chart.data.datasets.pop();
-
 //console.log("hh");
-
 }
 
 function addData(val){
-
   chart.data.datasets[0].data.push(val);
-
   chart.data.labels.push(".");
-
   console.log(chart.data.datasets[0].data.length);
-
   if(chart.data.datasets[0].data.length>=500){
-
    console.log(chart.data.datasets[0].data.shift());
-
    chart.data.labels.shift();
-
   }
 
   if(chart.data.datasets[0].data.length > 0){
-
    pop_second_arr();
-
     var data_ = calc_nadaray(chart.data.datasets[0].data);
-
     //console.log(calc_nadaray(chart.data.datasets[0]));
-
-    var new_ = {
-
+    var new_ = { 
     label: "#3",
 
     data: data_,
